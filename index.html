@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Peesa Lahari Sri — AI & ML Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #111118;
+    --bg3: #18181f;
+    --accent: #7c6af7;
+    --accent2: #b8aefc;
+    --text: #f0eeff;
+    --muted: #8a88a0;
+    --border: rgba(124,106,247,0.18);
+    --card: #14141c;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 5%;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.88rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 120px 5% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(ellipse, rgba(124,106,247,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 900px;
+    text-align: center;
+    position: relative;
+    animation: fadeUp 0.9s ease both;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(124,106,247,0.12);
+    border: 1px solid var(--border);
+    color: var(--accent2);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 99px;
+    margin-bottom: 2rem;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+    position: relative;
+  }
+  .hero p {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
+    font-weight: 300;
+  }
+  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover { background: #9080ff; transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  .scroll-hint {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: var(--muted); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+  .scroll-hint svg { width: 16px; height: 16px; }
+
+  /* ── SECTION BASE ── */
+  section { padding: 100px 5%; }
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .section-sub {
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 500px;
+    font-weight: 300;
+    margin-bottom: 3rem;
+  }
+  .max-w { max-width: 1100px; margin: 0 auto; }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .about-visual {
+    position: relative;
+  }
+  .avatar-box {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .avatar-initial {
+    font-family: 'Syne', sans-serif;
+    font-size: 7rem;
+    font-weight: 800;
+    color: rgba(124,106,247,0.25);
+    user-select: none;
+  }
+  .avatar-box::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
+    background: linear-gradient(to top, rgba(20,20,28,0.8), transparent);
+  }
+  .status-badge {
+    position: absolute; bottom: 20px; left: 20px; right: 20px; z-index: 2;
+    background: rgba(20,20,28,0.9);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .status-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 8px rgba(74,222,128,0.6);
+    flex-shrink: 0;
+  }
+  .status-text { font-size: 0.82rem; color: var(--text); }
+  .status-text span { color: var(--muted); font-size: 0.75rem; display: block; margin-top: 2px; }
+
+  .about-content {}
+  .about-bio {
+    color: var(--muted);
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  .about-bio strong { color: var(--text); font-weight: 500; }
+
+  .info-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .info-item { display: flex; flex-direction: column; gap: 3px; }
+  .info-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+  .info-value { font-size: 0.92rem; color: var(--text); font-weight: 500; }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--bg2); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  .skill-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .skill-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .skill-icon {
+    width: 44px; height: 44px;
+    background: rgba(124,106,247,0.12);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+  .skill-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+  .skill-level { font-size: 0.8rem; color: var(--muted); }
+
+  /* ── EXPERIENCE / PROJECTS ── */
+  .timeline { display: flex; flex-direction: column; gap: 2rem; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  .timeline-date {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-align: right;
+    padding-top: 0.3rem;
+    letter-spacing: 0.04em;
+  }
+  .timeline-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .timeline-card:hover { border-color: rgba(124,106,247,0.45); }
+  .timeline-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+  }
+  .timeline-role {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+  .timeline-org { color: var(--accent2); font-size: 0.88rem; margin-bottom: 0.8rem; }
+  .timeline-desc { color: var(--muted); font-size: 0.9rem; font-weight: 300; line-height: 1.7; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
+  .tag {
+    font-size: 0.72rem;
+    padding: 4px 12px;
+    border-radius: 99px;
+    background: rgba(124,106,247,0.1);
+    border: 1px solid rgba(124,106,247,0.2);
+    color: var(--accent2);
+    letter-spacing: 0.03em;
+  }
+
+  /* ── PROJECT HIGHLIGHT ── */
+  #projects { background: var(--bg2); }
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    transition: border-color 0.2s, transform 0.2s;
+    margin-bottom: 1.5rem;
+  }
+  .project-card:hover { border-color: rgba(124,106,247,0.45); transform: translateY(-4px); }
+  .project-label {
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--accent); margin-bottom: 0.5rem;
+  }
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1.4rem; margin-bottom: 0.8rem; letter-spacing: -0.01em;
+  }
+  .project-desc { color: var(--muted); font-size: 0.95rem; font-weight: 300; line-height: 1.7; }
+  .project-icon {
+    width: 80px; height: 80px;
+    background: rgba(124,106,247,0.1);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.2rem;
+    flex-shrink: 0;
+  }
+
+  /* ── CERTIFICATIONS ── */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+  }
+  .cert-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    display: flex; gap: 1rem; align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+  .cert-card:hover { border-color: var(--accent); }
+  .cert-icon {
+    width: 42px; height: 42px; flex-shrink: 0;
+    background: rgba(124,106,247,0.12);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+  }
+  .cert-name { font-weight: 500; font-size: 0.92rem; margin-bottom: 3px; }
+  .cert-issuer { color: var(--muted); font-size: 0.8rem; }
+
+  /* ── EDUCATION ── */
+  #education { background: var(--bg2); }
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .edu-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2rem;
+    position: relative; overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .edu-card:hover { border-color: rgba(124,106,247,0.45); }
+  .edu-card::after {
+    content: '';
+    position: absolute; bottom: 0; right: 0;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle at bottom right, rgba(124,106,247,0.12), transparent);
+  }
+  .edu-degree { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 6px; }
+  .edu-school { color: var(--accent2); font-size: 0.88rem; margin-bottom: 6px; }
+  .edu-year { color: var(--muted); font-size: 0.82rem; }
+
+  /* ── CONTACT ── */
+  .contact-inner {
+    max-width: 640px; margin: 0 auto; text-align: center;
+  }
+  .contact-inner .section-title { margin-bottom: 0.8rem; }
+  .contact-inner p { color: var(--muted); font-weight: 300; margin-bottom: 2.5rem; }
+  .contact-links {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 22px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.88rem;
+    transition: all 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--muted);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(6px); }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .timeline-date { text-align: left; }
+    .project-card { grid-template-columns: 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#"><span>L</span>ahari Sri</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Available for Internships &amp; Collaborations</div>
+    <h1>Future Tech Innovator<br/>in <em>AI &amp; Machine Learning</em></h1>
+    <p>B.Tech CSE student at ANITS · Passionate about Python, Web Dev &amp; building AI-powered solutions that matter.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M8 3v10M4 9l4 4 4-4"/>
+    </svg>
+    Scroll
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="max-w">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="avatar-box">
+          <div class="avatar-initial">PL</div>
+          <div class="status-badge">
+            <div class="status-dot"></div>
+            <div class="status-text">
+              Open to Opportunities
+              <span>B.Tech CSE · 2027 Graduate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-content reveal">
+        <span class="section-label">About Me</span>
+        <h2 class="section-title">Coding the Future,<br/>One Model at a Time</h2>
+        <p class="about-bio">
+          I'm <strong>Peesa Lahari Sri</strong>, an AI &amp; ML enthusiast pursuing B.Tech in Computer Science at Anil Neerukonda Institute of Technology &amp; Sciences (expected 2027). I thrive at the intersection of intelligent systems and creative problem-solving.
+          <br/><br/>
+          My hands-on experience spans Python, JavaScript, React, and deep learning frameworks. I've built real-world AI solutions — including an Indian Sign Language recognition model — and love pushing boundaries in hackathons. Beyond code, you'll find me singing, drawing, or deep in a good book.
+        </p>
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-label">Location</span>
+            <span class="info-value">Vizianagaram, Andhra Pradesh</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Degree</span>
+            <span class="info-value">B.Tech Computer Science</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Graduation</span>
+            <span class="info-value">June 2027</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Focus</span>
+            <span class="info-value">AI, ML &amp; Web Dev</span>
+          </div>
+        </div>
+        <a href="mailto:peesalaharisri@gmail.com" class="btn btn-primary">Say Hello 👋</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="max-w">
+    <span class="section-label">What I Know</span>
+    <h2 class="section-title">Skills &amp; Technologies</h2>
+    <p class="section-sub">A toolkit built through coursework, hackathons, and relentless self-learning.</p>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-icon">🐍</div>
+        <div class="skill-name">Python</div>
+        <div class="skill-level">Primary Language</div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">☕</div>
+        <div class="skill-name">Java</div>
+        <div class="skill-level">OOP &amp; Backend</div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">⚡</div>
+        <div class="skill-name">JavaScript</div>
+        <div class="skill-level">Frontend Logic</div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">⚛️</div>
+        <div class="skill-name">React</div>
+        <div class="skill-level">UI Development</div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🧠</div>
+        <div class="skill-name">Machine Learning</div>
+        <div class="skill-level">Deep Learning · CV</div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">👁️</div>
+        <div class="skill-name">Computer Vision</div>
+        <div class="skill-level">OpenCV · Models</div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🌐</div>
+        <div class="skill-name">Web Design</div>
+        <div class="skill-level">HTML · CSS</div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🔒</div>
+        <div class="skill-name">Cyber Awareness</div>
+        <div class="skill-level">Deloitte Certified</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="max-w">
+    <span class="section-label">My Journey</span>
+    <h2 class="section-title">Experience</h2>
+    <p class="section-sub">Learning by doing — hackathons, competitions and real-world challenges.</p>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-date">Jan 2026 — Present</div>
+        <div class="timeline-card">
+          <div class="timeline-role">Ignite Hack Participant</div>
+          <div class="timeline-org">Anil Neerukonda Institute Of Technology &amp; Sciences</div>
+          <div class="timeline-desc">Actively competing in the ongoing Ignite Hack, applying AI &amp; ML skills to solve real-world problems under time constraints while collaborating with interdisciplinary teams.</div>
+          <div class="tag-row">
+            <span class="tag">AI/ML</span>
+            <span class="tag">Teamwork</span>
+            <span class="tag">Problem Solving</span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-date">Feb 2025 — Present</div>
+        <div class="timeline-card">
+          <div class="timeline-role">Hackathon Participant</div>
+          <div class="timeline-org">VR Siddhartha School of College — Vijayawada, AP</div>
+          <div class="timeline-desc">Developed an AI-powered Indian Sign Language (ISL) recognition system using Computer Vision and Deep Learning. Built gesture recognition models, collaborated on design within tight timelines, and presented to a panel of judges.</div>
+          <div class="tag-row">
+            <span class="tag">Python</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Accessibility AI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="max-w">
+    <span class="section-label">What I Built</span>
+    <h2 class="section-title">Featured Projects</h2>
+    <p class="section-sub">Real-world impact through intelligent, accessible technology.</p>
+
+    <div class="project-card reveal">
+      <div>
+        <div class="project-label">Featured Project · AI for Accessibility</div>
+        <div class="project-title">Indian Sign Language Recognition System</div>
+        <div class="project-desc">
+          An AI-powered real-time gesture recognition system that translates Indian Sign Language into text, making communication more accessible for the hearing-impaired community. Built with Python, deep learning, and computer vision — developed &amp; presented at a national-level hackathon.
+        </div>
+        <div class="tag-row">
+          <span class="tag">Python</span>
+          <span class="tag">OpenCV</span>
+          <span class="tag">Deep Learning</span>
+          <span class="tag">Accessibility</span>
+          <span class="tag">Computer Vision</span>
+        </div>
+      </div>
+      <div class="project-icon">🤟</div>
+    </div>
+
+    <div class="project-card reveal">
+      <div>
+        <div class="project-label">Web Development</div>
+        <div class="project-title">Interactive Web Applications</div>
+        <div class="project-desc">
+          Various frontend and full-stack web projects built using JavaScript, React, HTML &amp; CSS — combining clean UI design with dynamic, data-driven functionality.
+        </div>
+        <div class="tag-row">
+          <span class="tag">React</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">HTML/CSS</span>
+          <span class="tag">UI/UX</span>
+        </div>
+      </div>
+      <div class="project-icon">🌐</div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="max-w">
+    <span class="section-label">Credentials</span>
+    <h2 class="section-title">Certifications</h2>
+    <p class="section-sub">Industry-recognized credentials from global organizations.</p>
+    <div class="certs-grid">
+      <div class="cert-card reveal">
+        <div class="cert-icon">💼</div>
+        <div>
+          <div class="cert-name">Technology Job Simulation</div>
+          <div class="cert-issuer">Deloitte Australia</div>
+        </div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">🔐</div>
+        <div>
+          <div class="cert-name">Cyber Job Simulation</div>
+          <div class="cert-issuer">Deloitte Australia</div>
+        </div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-icon">📚</div>
+        <div>
+          <div class="cert-name">Technical Articles &amp; Contributions</div>
+          <div class="cert-issuer">Greek for Greeks</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="max-w">
+    <span class="section-label">Academic Background</span>
+    <h2 class="section-title">Education</h2>
+    <p class="section-sub">A strong academic foundation built on science, engineering, and curiosity.</p>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="edu-degree">Bachelor of Technology — Computer Science</div>
+        <div class="edu-school">Anil Neerukonda Institute of Technology &amp; Sciences</div>
+        <div class="edu-year">September 2023 — June 2027</div>
+        <div class="tag-row" style="margin-top:1rem;">
+          <span class="tag">AI &amp; ML Specialization</span>
+        </div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-degree">Intermediate — Maths, Physics &amp; Chemistry</div>
+        <div class="edu-school">Sri Chaitanya College of Education</div>
+        <div class="edu-year">April 2021 — June 2023</div>
+        <div class="tag-row" style="margin-top:1rem;">
+          <span class="tag">Science Stream</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner reveal">
+    <span class="section-label">Let's Connect</span>
+    <h2 class="section-title">Get in Touch</h2>
+    <p>Interested in AI, coding, or any tech trends? I'm always open to discussing ideas, projects, and collaboration opportunities. Let's push the boundaries together!</p>
+    <div class="contact-links">
+      <a href="mailto:peesalaharisri@gmail.com" class="contact-link">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        peesalaharisri@gmail.com
+      </a>
+      <a href="tel:9392962451" class="contact-link">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.67 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.59 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        9392962451
+      </a>
+      <a href="https://www.linkedin.com/in/peesalaharisri" target="_blank" class="contact-link">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed &amp; built with ♥ · Peesa Lahari Sri © 2026</p>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
